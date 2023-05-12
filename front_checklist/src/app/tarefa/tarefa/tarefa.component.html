@@ -1,0 +1,73 @@
+<mat-card>
+  <mat-card-content>
+    <mat-toolbar color="primary">
+      <span>Minhas tarefas</span>
+    </mat-toolbar>
+
+    <!-- Nome -->
+    <mat-table [dataSource]="tarefas" class="mat-elevation-z8">
+      <ng-container matColumnDef="nome">
+        <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.nome }}</mat-cell>
+      </ng-container>
+
+      <!-- Prioridade Column -->
+      <ng-container matColumnDef="prioridade">
+        <mat-header-cell *matHeaderCellDef>Prioridade</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.prioridade }}</mat-cell>
+      </ng-container>
+
+      <!-- Hora Marcada Column -->
+      <ng-container matColumnDef="horamarcada">
+        <mat-header-cell *matHeaderCellDef>Hora marcada</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.horamarcada }}</mat-cell>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.status }}</mat-cell>
+      </ng-container>
+
+      <!-- EstadoTarefa Column -->
+      <ng-container matColumnDef="estadotarefa">
+        <mat-header-cell *matHeaderCellDef>estadotarefa</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.estadotarefa }}</mat-cell>
+      </ng-container>
+
+      <!-- Ações Column -->
+      <ng-container matColumnDef="acoes">
+        <mat-header-cell *matHeaderCellDef>
+          <button
+            mat-raised-button
+            color="primary"
+            aria-label="Adicionar uma tarefa"
+            (click)="onAdd()"
+          >
+            <mat-icon>add</mat-icon>
+            ADD
+          </button>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <a routerLink="atualizar/{{ element.id }}">
+          <button
+            mat-icon-button
+            color="primary"
+            aria-label="Editar uma tarefa"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </a>
+        <a routerLink="deletar/{{ element.id }}">
+          <button mat-icon-button color="warn" aria-label="Remover uma tarefa">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </a>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </mat-card-content>
+</mat-card>

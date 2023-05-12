@@ -1,0 +1,22 @@
+.action-column {
+  flex: 0 0 125px;
+}
+
+.action-column-header {
+  margin: 0 auto;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 600px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+@media (max-width: 600px) {
+  .mat-header-cell, .mat-cell {
+    max-width: 150px;
+  }
+}
+
+
