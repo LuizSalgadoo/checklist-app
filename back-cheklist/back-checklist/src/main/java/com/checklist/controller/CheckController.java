@@ -4,10 +4,13 @@ import com.checklist.dto.CheckListDtoGet;
 import com.checklist.dto.CheckListDtoPost;
 import com.checklist.dto.CheckListDtoPut;
 import com.checklist.enums.Prioridade;
+import com.checklist.enums.Status;
 import com.checklist.model.CheckList;
 import com.checklist.repositories.CheckRepository;
+import com.checklist.service.CheckService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -16,6 +19,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RestController
@@ -24,6 +28,9 @@ public class CheckController {
 
     @Autowired
     private CheckRepository checkRepository;
+
+    @Autowired
+    private CheckService checkService;
 
     @GetMapping
     public List<CheckListDtoGet> getCheckList() {
@@ -65,4 +72,14 @@ public class CheckController {
         checkList.setStatus(checkListOptional.get().getStatus());
         return ResponseEntity.ok().body(checkRepository.save(checkList));
     }
+
+
+
+    @PutMapping("/{id}/alterar-status")
+    public ResponseEntity<CheckList> alterarStatus(@PathVariable Integer id) {
+        CheckList checkList = checkService.alterarStatus(id);
+        return ResponseEntity.ok(checkList);
+    }
+
+
 }

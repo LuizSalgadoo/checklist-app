@@ -38,4 +38,9 @@ export class TarefasService {
     const url = `${this.API}/deletar/${id}`;
     return this.httpClient.delete<Tarefa>(url).pipe(first());
   }
+
+  alterarStatus(id: number): Observable<any> {
+    const url = `${this.API}/${id}/alterar-status`;
+    return this.httpClient.put(url, {});
+  }
 }

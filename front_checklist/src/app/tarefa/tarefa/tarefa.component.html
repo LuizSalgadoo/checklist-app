@@ -23,16 +23,15 @@
         <mat-cell *matCellDef="let element">{{ element.horamarcada }}</mat-cell>
       </ng-container>
 
-      <!-- Status Column -->
       <ng-container matColumnDef="status">
         <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.status }}</mat-cell>
-      </ng-container>
-
-      <!-- EstadoTarefa Column -->
-      <ng-container matColumnDef="estadotarefa">
-        <mat-header-cell *matHeaderCellDef>estadotarefa</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.estadotarefa }}</mat-cell>
+        <mat-cell *matCellDef="let element">
+          <!-- Botão FAB para alternar o status -->
+          <button mat-mini-fab color="primary" (click)="alterarStatus(element)">
+            <!-- Adicione o ícone do Material Icons aqui -->
+            <mat-icon>{{ obterIconePorStatus(element.status) }}</mat-icon>
+          </button>
+        </mat-cell>
       </ng-container>
 
       <!-- Ações Column -->
@@ -50,19 +49,23 @@
         </mat-header-cell>
         <mat-cell *matCellDef="let element">
           <a routerLink="atualizar/{{ element.id }}">
-          <button
-            mat-icon-button
-            color="primary"
-            aria-label="Editar uma tarefa"
-          >
-            <mat-icon>edit</mat-icon>
-          </button>
-        </a>
-        <a routerLink="deletar/{{ element.id }}">
-          <button mat-icon-button color="warn" aria-label="Remover uma tarefa">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </a>
+            <button
+              mat-icon-button
+              color="primary"
+              aria-label="Editar uma tarefa"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+          </a>
+          <a routerLink="deletar/{{ element.id }}">
+            <button
+              mat-icon-button
+              color="warn"
+              aria-label="Remover uma tarefa"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </a>
         </mat-cell>
       </ng-container>
 
