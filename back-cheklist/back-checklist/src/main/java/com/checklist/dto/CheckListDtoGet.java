@@ -19,6 +19,8 @@ public class CheckListDtoGet {
     private String prioridade;
     private String horamarcada;
 
+    private String referencia;
+
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDENTE;
     @JsonFormat(timezone = "UTC", pattern="HH:mm")
@@ -34,6 +36,7 @@ public class CheckListDtoGet {
         this.status = checkList.getStatus();
         this.horainicio = checkList.getHorainicio();
         this.horafim = checkList.getHorafim();
+        this.referencia = checkList.getReferencia();
     }
 
     public static List<CheckListDtoGet> converter(List<CheckList> checkList) {

@@ -20,7 +20,7 @@ export class TarefasService {
 
   save(tarefa: Tarefa) {
     return this.httpClient
-      .post<Tarefa>(this.API + '/criarchecklist1', tarefa)
+      .post<Tarefa>(this.API + '/criarchecklist', tarefa)
       .pipe(first());
   }
 

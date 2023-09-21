@@ -26,6 +26,8 @@ public class CheckList {
     private String prioridade;
     private String horamarcada;
 
+    private String referencia;
+
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDENTE;
 
@@ -40,11 +42,12 @@ public class CheckList {
     public CheckList() {
 
     }
-    public CheckList(String nome, String prioridade, String horamarcada, Status status) {
+    public CheckList(String nome, String prioridade, String horamarcada, Status status, String referencia) {
         this.nome = nome;
         this.prioridade = prioridade;
         this.horamarcada = horamarcada;
         this.status = status;
+        this.referencia = referencia;
     }
 
 }
