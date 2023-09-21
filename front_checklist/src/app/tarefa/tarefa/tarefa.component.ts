@@ -18,7 +18,7 @@ enum Status {
 export class TarefaComponent implements OnInit {
 
   tarefas: Observable<Tarefa[]>;
-  displayedColumns = ['nome', 'prioridade', 'horamarcada', 'status', 'acoes'];
+  displayedColumns = ['referencia', 'nome', 'prioridade', 'horamarcada', 'status', 'acoes'];
   currentStatus: Status = Status.Pendente;
   status: string = 'pendente';
 
@@ -78,6 +78,10 @@ export class TarefaComponent implements OnInit {
       default:
         return 'pending_actions'; // Ícone padrão
     }
+  }
+
+  construirUrl(referencia: string): string {
+    return 'https://pt.wikipedia.org/wiki/' + referencia;
   }
 
 
