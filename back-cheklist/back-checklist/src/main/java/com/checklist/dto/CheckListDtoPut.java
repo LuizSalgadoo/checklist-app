@@ -16,4 +16,6 @@ public class CheckListDtoPut {
     @NotNull
     public String horamarcada;
 
+    public String referencia;
+
 }

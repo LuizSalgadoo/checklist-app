@@ -15,6 +15,8 @@ public class CheckListDtoPost {
     private String prioridade;
     private String horamarcada;
 
+    private String referencia;
+
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDENTE;
 
@@ -27,15 +29,16 @@ public class CheckListDtoPost {
         this.nome = checkListPost.getNome();
         this.prioridade = checkListPost.getPrioridade();
         this.horamarcada = checkListPost.getHoramarcada();
+        this.referencia = checkListPost.getReferencia();
     }
 
 
     public CheckList converter() {
-        return new CheckList(nome, prioridade, horamarcada, status);
+        return new CheckList(nome, prioridade, horamarcada, status, referencia);
     }
 
     public CheckList converter(CheckRepository checkRepository) {
         CheckList checkList = checkRepository.findByNome(nome);
-        return new CheckList(nome, prioridade, horamarcada, status);
+        return new CheckList(nome, prioridade, horamarcada, status, referencia);
     }
 }
