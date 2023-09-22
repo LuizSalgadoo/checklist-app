@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -17,5 +18,9 @@ public class CheckListDtoPut {
     public String horamarcada;
 
     public String referencia;
+
+    public LocalDateTime horainicio = LocalDateTime.now();
+
+    public LocalDateTime horafim = LocalDateTime.now();
 
 }
