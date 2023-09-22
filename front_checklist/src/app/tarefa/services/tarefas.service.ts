@@ -20,7 +20,7 @@ export class TarefasService {
 
   save(tarefa: Tarefa) {
     return this.httpClient
-      .post<Tarefa>(this.API + '/criarchecklist1', tarefa)
+      .post<Tarefa>(this.API + '/criarchecklist', tarefa)
       .pipe(first());
   }
 
@@ -40,7 +40,7 @@ export class TarefasService {
   }
 
   alterarStatus(id: number, horaInicio: string, horaFim: string): Observable<any> {
-    const url = `${this.API}/alterar-status/${id}`;
+    const url = `${this.API}/${id}/alterar-status`;
     return this.httpClient.put(url, { horaInicio, horaFim });
   }
 }
