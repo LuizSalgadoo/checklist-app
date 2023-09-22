@@ -31,13 +31,13 @@ public class CheckList {
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDENTE;
 
-    @CreationTimestamp
-    @JsonFormat(timezone = "UTC", pattern="HH:mm")
-    public LocalDateTime horainicio = LocalDateTime.now();
 
-    @CreationTimestamp
     @JsonFormat(timezone = "UTC", pattern="HH:mm")
-    public LocalDateTime horafim = LocalDateTime.now();
+    public LocalDateTime horainicio;
+
+
+    @JsonFormat(timezone = "UTC", pattern="HH:mm")
+    public LocalDateTime horafim;
 
     public CheckList() {
 

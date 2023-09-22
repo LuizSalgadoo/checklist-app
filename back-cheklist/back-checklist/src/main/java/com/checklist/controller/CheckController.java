@@ -76,8 +76,8 @@ public class CheckController {
 
 
     @PutMapping("/{id}/alterar-status")
-    public ResponseEntity<CheckList> alterarStatus(@PathVariable Integer id) {
-        CheckList checkList = checkService.alterarStatus(id);
+    public ResponseEntity<CheckList> alterarStatus(@PathVariable Integer id, @RequestBody CheckListDtoPut checkListDtoPut) {
+        CheckList checkList = checkService.alterarStatus(id, checkListDtoPut.getHorainicio(), checkListDtoPut.getHorafim());
         return ResponseEntity.ok(checkList);
     }
 
