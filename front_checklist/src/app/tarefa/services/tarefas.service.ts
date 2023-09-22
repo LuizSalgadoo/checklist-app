@@ -20,7 +20,7 @@ export class TarefasService {
 
   save(tarefa: Tarefa) {
     return this.httpClient
-      .post<Tarefa>(this.API + '/criarchecklist', tarefa)
+      .post<Tarefa>(this.API + '/criarchecklist1', tarefa)
       .pipe(first());
   }
 
@@ -39,8 +39,8 @@ export class TarefasService {
     return this.httpClient.delete<Tarefa>(url).pipe(first());
   }
 
-  alterarStatus(id: number): Observable<any> {
-    const url = `${this.API}/${id}/alterar-status`;
-    return this.httpClient.put(url, {});
+  alterarStatus(id: number, horaInicio: string, horaFim: string): Observable<any> {
+    const url = `${this.API}/alterar-status/${id}`;
+    return this.httpClient.put(url, { horaInicio, horaFim });
   }
 }

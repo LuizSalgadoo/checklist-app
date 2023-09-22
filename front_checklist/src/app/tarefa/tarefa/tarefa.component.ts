@@ -50,8 +50,17 @@ export class TarefaComponent implements OnInit {
   }
 
   alterarStatus(element: any) {
+    // Captura a data e hora atuais
+    const  currentTime = new Date().toLocaleString();
+
+    if (!element.horaInicio) {
+      element.horaInicio = currentTime;
+  } else {
+      element.horaFim = currentTime;
+  }
+
     // Faça a chamada ao serviço para alterar o status
-    this.tarefaService.alterarStatus(element.id).subscribe(
+    this.tarefaService.alterarStatus(element.id, element.horaInicio, element.horaFim).subscribe(
       (response) => {
         // Lógica para atualizar a interface do usuário com o novo status
         console.log('Status alterado com sucesso!', response);
@@ -60,12 +69,15 @@ export class TarefaComponent implements OnInit {
 
         // Atualize element.icon com base no novo status
         element.icon = this.obterIconePorStatus(response.status);
+
+        // Log da hora em que o botão foi clicado
+        console.log('Botão clicado em:', element.clickedAt);
       },
       (error) => {
         console.error('Erro ao alterar o status', error);
       }
     );
-  }
+}
 
   obterIconePorStatus(status: string): string {
     switch (status.toLowerCase()) {
