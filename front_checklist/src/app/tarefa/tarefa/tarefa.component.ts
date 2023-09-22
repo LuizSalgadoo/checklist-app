@@ -60,7 +60,7 @@ export class TarefaComponent implements OnInit {
   }
 
     // Faça a chamada ao serviço para alterar o status
-    this.tarefaService.alterarStatus(element.id, element.horaIniciom, element.horaFim).subscribe(
+    this.tarefaService.alterarStatus(element.id, element.horaInicio, element.horaFim).subscribe(
       (response) => {
         // Lógica para atualizar a interface do usuário com o novo status
         console.log('Status alterado com sucesso!', response);
