@@ -4,4 +4,5 @@ export interface Tarefa {
   prioridade: string;
   horamarcada: string;
   status: string;
+  referencia: string
 }

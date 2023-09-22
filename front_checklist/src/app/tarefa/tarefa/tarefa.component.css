@@ -19,4 +19,27 @@
   }
 }
 
+/* Estilo para o link antes de ser clicado */
+mat-cell a {
+  color: #0066cc; /* Cor do link */
+  text-decoration: none; /* Remove o sublinhado */
+  cursor: pointer; /* Muda o cursor para um ponteiro ao passar o mouse sobre o link */
+}
+
+/* Estilo para o link ao passar o mouse sobre ele */
+mat-cell a:hover {
+  font-weight: bold;
+  color: #0077ff; /* Cor do link ao passar o mouse */
+  text-decoration: none; /* Adiciona sublinhado ao passar o mouse */
+}
+
+/* Estilo para o link após ser clicado (visitado) */
+mat-cell a:visited {
+  color: #0066cc; /* Cor do link visitado */
+}
+
+mat-cell a:hover:visited {
+  color: #0077ff;
+}
+
 

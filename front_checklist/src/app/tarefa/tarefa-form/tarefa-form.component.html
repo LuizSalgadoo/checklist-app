@@ -10,6 +10,7 @@
         <input matInput placeholder="Nome" formControlName="nome"/>
       </mat-form-field>
 
+
       <mat-form-field class="full-width">
         <mat-label>Escolha uma opção</mat-label>
         <mat-select formControlName="prioridade">
@@ -21,14 +22,22 @@
 
       <mat-form-field class="full-width">
         <input
-          matInput
-          placeholder="Hora Marcada"
+        matInput
+        placeholder="Hora Marcada"
           formControlName="horamarcada"
           type="time"
           min="00:00"
           max="23:59"
-        />
-      </mat-form-field>
+          />
+        </mat-form-field>
+
+        <td style="width: 35%">
+          <mat-form-field class="full-width">
+            <mat-label>REFERÊNCIA</mat-label>
+            <span matPrefix>https://pt.wikipedia.org/wiki/</span>
+            <input matInput formControlName="referencia" />
+          </mat-form-field>
+        </td>
 
     </form>
   </mat-card-content>
