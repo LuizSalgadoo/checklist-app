@@ -33,6 +33,7 @@ export class TarefaFormComponent implements OnInit {
 
   onSubmit() {
     this.service.save(this.form.value).subscribe(result => console.log(result));
+    this.router.navigateByUrl('/');
   }
 
   onCancel() {
