@@ -4,10 +4,13 @@ import com.checklist.enums.Status;
 import com.checklist.model.CheckList;
 import com.checklist.repositories.CheckRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,6 +18,9 @@ public class CheckService {
 
     @Autowired
     private CheckRepository checkRepository;
+
+    @Autowired
+    private EmailService emailService;
 
     public void atualizarStatus(Long check, Status novoStatus) {
         CheckList checkList = checkRepository.findById(check);
@@ -37,32 +43,44 @@ public class CheckService {
         if (optionalCheckList.isPresent()) {
             CheckList checkList = optionalCheckList.get();
             Status statusAtual = checkList.getStatus();
+
+
+            if (statusAtual == Status.FINALIZADO) {
+                throw new IllegalStateException("Não é possível alterar atividades já finalizadas");
+            }
+
             LocalDateTime agora = LocalDateTime.now();
 
-            // Lógica para alternar o status e registrar a hora de início e fim
+
             switch (statusAtual) {
                 case PENDENTE:
                     checkList.setStatus(Status.INICIADO);
-                    checkList.setHorainicio(agora); // Registra a hora de início
+                    checkList.setHorainicio(agora);
                     break;
                 case INICIADO:
                     checkList.setStatus(Status.FINALIZADO);
-                    checkList.setHorafim(agora); // Registra a hora de fim
+                    checkList.setHorafim(agora);
                     break;
-                case FINALIZADO:
-                    checkList.setStatus(Status.PENDENTE);
-                    // Se necessário, resetar as horas de início e fim
-                    checkList.setHorainicio(null);
-                    checkList.setHorafim(null);
-                    break;
+
             }
 
-            // Salvar o CheckList atualizado no banco de dados
+
             checkRepository.save(checkList);
 
             return checkList;
         } else {
             throw new EntityNotFoundException("CheckList com ID " + id + " não encontrado");
+        }
+    }
+
+    @Scheduled(fixedRate = 600000)
+    public void verificarCheckListsPendentes() {
+        LocalDateTime agora = LocalDateTime.now();
+        String horaAtual = agora.format(DateTimeFormatter.ofPattern("HH:mm"));
+        List<CheckList> checkListsPendentes = checkRepository.findPendentesComHoraMarcadaPassada(Status.PENDENTE, horaAtual);
+
+        if (!checkListsPendentes.isEmpty()) {
+            emailService.enviarEmail(checkListsPendentes, agora);
         }
     }
 }
