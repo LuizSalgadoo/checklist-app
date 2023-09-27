@@ -70,6 +70,7 @@ public class CheckController {
         BeanUtils.copyProperties(form, checkList);
         checkList.setId(checkListOptional.get().getId());
         checkList.setStatus(checkListOptional.get().getStatus());
+
         return ResponseEntity.ok().body(checkRepository.save(checkList));
     }
 

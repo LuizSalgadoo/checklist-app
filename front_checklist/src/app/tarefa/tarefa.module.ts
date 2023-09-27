@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { TarefaFormComponent } from './tarefa-form/tarefa-form.component';
 import { TarefaRoutingModule } from './tarefa-routing.module';
@@ -45,7 +46,8 @@ import { TarefaDeleteComponent } from './tarefa-delete/tarefa-delete.component';
     MatInputModule,
     MatSelectModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatMenuModule
   ]
 })
 export class TarefaModule { }

@@ -24,6 +24,7 @@ public class CheckList {
     private String nome;
     @NotBlank
     private String prioridade;
+
     private String horamarcada;
 
     private String referencia;
