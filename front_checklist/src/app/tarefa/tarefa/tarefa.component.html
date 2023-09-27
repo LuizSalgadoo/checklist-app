@@ -6,14 +6,15 @@
 
     <!-- Nome -->
     <mat-table [dataSource]="tarefas" class="mat-elevation-z8">
-
       <!-- Referencia Column -->
-<ng-container matColumnDef="referencia">
-  <mat-header-cell *matHeaderCellDef>Referência</mat-header-cell>
-  <mat-cell *matCellDef="let element">
-    <a [href]="construirUrl(element.referencia)" target="_blank">{{ element.referencia }}</a>
-  </mat-cell>
-</ng-container>
+      <ng-container matColumnDef="referencia">
+        <mat-header-cell *matHeaderCellDef>Referência</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <a [href]="construirUrl(element.referencia)" target="_blank">{{
+            element.referencia
+          }}</a>
+        </mat-cell>
+      </ng-container>
 
       <ng-container matColumnDef="nome">
         <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
@@ -56,6 +57,9 @@
             ADD
           </button>
         </mat-header-cell>
+        <mat-cell *matHeaderCellDef>
+
+      </mat-cell>
         <mat-cell *matCellDef="let element">
           <a routerLink="atualizar/{{ element.id }}">
             <button
@@ -66,6 +70,15 @@
               <mat-icon>edit</mat-icon>
             </button>
           </a>
+          <button
+          mat-icon-button
+          color="primary"
+          aria-label="Evidência Crítica"
+          (click)="openModalCritic()"
+        >
+          <mat-icon>delete</mat-icon>
+            DELETE
+        </button>
           <a routerLink="deletar/{{ element.id }}">
             <button
               mat-icon-button
