@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { first, tap, Observable } from 'rxjs';
 import { Tarefa } from '../model/tarefa';
+import { Printona } from '../model/printona';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +17,12 @@ export class TarefasService {
       first(),
       tap((tarefa) => console.log(tarefa))
     );
+  }
+
+  enviarPrint(print: any) {
+    return this.httpClient
+      .post<Printona>(this.API + '/printEvidencia', print)
+      .pipe(first());
   }
 
   save(tarefa: Tarefa) {
@@ -39,7 +46,11 @@ export class TarefasService {
     return this.httpClient.delete<Tarefa>(url).pipe(first());
   }
 
-  alterarStatus(id: number, horaInicio: string, horaFim: string): Observable<any> {
+  alterarStatus(
+    id: number,
+    horaInicio: string,
+    horaFim: string
+  ): Observable<any> {
     const url = `${this.API}/${id}/alterar-status`;
     return this.httpClient.put(url, { horaInicio, horaFim });
   }

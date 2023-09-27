@@ -1,4 +1,12 @@
-<h1 mat-dialog-title>Hi Rubens</h1>
+<h1 mat-dialog-title>Hi Pintudo</h1>
+<div mat-dialog-content>
+  <p>Cole abaixo o print da tarefa finalizada</p>
+  <mat-form-field>
+    <mat-label>Print da evidência</mat-label>
+    <input matInput>
+  </mat-form-field>
+</div>
 <div mat-dialog-actions>
-  <button mat-button (click)="cancel()">No Thanks</button>
+  <button mat-button (click)="cancel()">Cancelar</button>
+  <button mat-button cdkFocusInitial>Enviar evidência</button>
 </div>
