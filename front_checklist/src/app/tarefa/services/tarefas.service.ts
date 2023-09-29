@@ -7,7 +7,8 @@ import { Tarefa } from '../model/tarefa';
   providedIn: 'root',
 })
 export class TarefasService {
-  private readonly API = 'producao/checklist';
+
+  public readonly API = 'producao/checklist';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -16,6 +17,7 @@ export class TarefasService {
       first(),
       tap((tarefa) => console.log(tarefa))
     );
+    console.log(this.httpClient.get(this.API) + "Tomaaa")
   }
 
   save(tarefa: Tarefa) {

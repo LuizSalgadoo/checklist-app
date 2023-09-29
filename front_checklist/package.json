@@ -2,14 +2,17 @@
   "name": "front-checklist",
   "version": "0.0.0",
   "scripts": {
+    "test": "jest --verbose",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.config.js",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "watch": "ng build --watch --configuration development"
   },
   "private": true,
   "dependencies": {
+    "-": "^0.0.1",
     "@angular/animations": "^15.1.0",
     "@angular/cdk": "^15.2.8",
     "@angular/common": "^15.1.0",
@@ -20,7 +23,12 @@
     "@angular/platform-browser": "^15.1.0",
     "@angular/platform-browser-dynamic": "^15.1.0",
     "@angular/router": "^15.1.0",
+    "@types/jest": "^29.5.5",
+    "jest": "^29.7.0",
+    "jest-preset-angular": "^13.1.2",
     "rxjs": "~7.8.0",
+    "save-dev": "^0.0.1-security",
+    "ts-node": "^10.9.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
@@ -28,13 +36,6 @@
     "@angular-devkit/build-angular": "^15.1.6",
     "@angular/cli": "~15.1.6",
     "@angular/compiler-cli": "^15.1.0",
-    "@types/jasmine": "~4.3.0",
-    "jasmine-core": "~4.5.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~4.9.4"
   }
 }
