@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
-import {MatDialogModule} from '@angular/material/dialog';
 import { AppComponent } from './app.component';
 
 
@@ -25,8 +24,7 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    MatTableModule,
-    MatDialogModule
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
