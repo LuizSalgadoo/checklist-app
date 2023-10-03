@@ -42,4 +42,33 @@ mat-cell a:hover:visited {
   color: #0077ff;
 }
 
+.btn-editar mat-icon, .btn-editar {
+  color: #0077ff; /* Verde */
+  transition: color 0.3s;
+}
+
+.btn-editar:hover mat-icon, .btn-editar:hover {
+  color: #002fff; /* Verde escuro */
+}
+
+.btn-excluir mat-icon, .btn-excluir {
+  color: #f44336; /* Vermelho */
+  transition: color 0.3s;
+}
+
+.btn-excluir:hover mat-icon, .btn-excluir:hover {
+  color: #d32f2f; /* Vermelho escuro */
+}
+
+
+
+
+
+
+
+
+
+
+
+
 

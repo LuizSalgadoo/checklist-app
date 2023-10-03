@@ -11,12 +11,19 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { FormsModule } from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
+
 
 import { TarefaFormComponent } from './tarefa-form/tarefa-form.component';
 import { TarefaRoutingModule } from './tarefa-routing.module';
 import { TarefaUpdateComponent } from './tarefa-update/tarefa-update.component';
 import { TarefaComponent } from './tarefa/tarefa.component';
 import { TarefaDeleteComponent } from './tarefa-delete/tarefa-delete.component';
+import { TarefaModalComponent } from './tarefa-modal/tarefa-modal.component';
 
 
 
@@ -30,7 +37,8 @@ import { TarefaDeleteComponent } from './tarefa-delete/tarefa-delete.component';
     TarefaComponent,
     TarefaFormComponent,
     TarefaUpdateComponent,
-    TarefaDeleteComponent
+    TarefaDeleteComponent,
+    TarefaModalComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +53,11 @@ import { TarefaDeleteComponent } from './tarefa-delete/tarefa-delete.component';
     MatInputModule,
     MatSelectModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatMenuModule,
+    FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class TarefaModule { }

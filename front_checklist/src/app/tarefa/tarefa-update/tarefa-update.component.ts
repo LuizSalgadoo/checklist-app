@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TarefasService } from '../services/tarefas.service';
 import { Tarefa } from '../model/tarefa';
@@ -26,6 +26,7 @@ export class TarefaUpdateComponent implements OnInit {
         nome: [null],
         prioridade: [null],
         horamarcada: [null],
+        referencia: [null, Validators.maxLength(30)]
       });
     }
 

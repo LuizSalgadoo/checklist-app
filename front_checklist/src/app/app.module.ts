@@ -5,6 +5,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +26,8 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

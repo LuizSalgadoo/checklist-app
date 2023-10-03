@@ -22,3 +22,23 @@ mat-card {
 .segundo-botao {
   margin-left: 10px;
 }
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap; /* Permite que os itens sejam exibidos em várias linhas se necessário */
+  gap: 10px; /* Espaçamento entre os checkboxes */
+}
+
+.alinhado-esquerda .mat-select-value {
+  justify-content: flex-start;
+}
+
+.hide-checkbox {
+  display: none;
+}
+
+
+
+
+
+

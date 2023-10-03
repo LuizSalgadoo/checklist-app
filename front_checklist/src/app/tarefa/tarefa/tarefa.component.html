@@ -1,19 +1,20 @@
 <mat-card>
   <mat-card-content>
     <mat-toolbar color="primary">
-      <span>Minhas tarefas</span>
+      <span>Tarefas</span>
     </mat-toolbar>
 
     <!-- Nome -->
     <mat-table [dataSource]="tarefas" class="mat-elevation-z8">
-
       <!-- Referencia Column -->
-<ng-container matColumnDef="referencia">
-  <mat-header-cell *matHeaderCellDef>Referência</mat-header-cell>
-  <mat-cell *matCellDef="let element">
-    <a [href]="construirUrl(element.referencia)" target="_blank">{{ element.referencia }}</a>
-  </mat-cell>
-</ng-container>
+      <ng-container matColumnDef="referencia">
+        <mat-header-cell *matHeaderCellDef>Referência</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <a [href]="construirUrl(element.referencia)" target="_blank">{{
+            element.referencia
+          }}</a>
+        </mat-cell>
+      </ng-container>
 
       <ng-container matColumnDef="nome">
         <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
@@ -43,7 +44,7 @@
         </mat-cell>
       </ng-container>
 
-      <!-- Ações Column -->
+      <!-- Coluna de ações -->
       <ng-container matColumnDef="acoes">
         <mat-header-cell *matHeaderCellDef>
           <button
@@ -57,24 +58,32 @@
           </button>
         </mat-header-cell>
         <mat-cell *matCellDef="let element">
-          <a routerLink="atualizar/{{ element.id }}">
+          <!-- Botão de ações -->
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_horiz</mat-icon>
+          </button>
+
+          <!-- Menu de ações -->
+          <mat-menu #menu="matMenu">
             <button
-              mat-icon-button
-              color="primary"
+              mat-menu-item
+              routerLink="atualizar/{{ element.id }}"
               aria-label="Editar uma tarefa"
+              class="btn-editar"
             >
-              <mat-icon>edit</mat-icon>
+              <mat-icon>edit_square</mat-icon>
+              Editar
             </button>
-          </a>
-          <a routerLink="deletar/{{ element.id }}">
             <button
-              mat-icon-button
-              color="warn"
+              mat-menu-item
+              routerLink="deletar/{{ element.id }}"
               aria-label="Remover uma tarefa"
+              class="btn-excluir"
             >
               <mat-icon>delete</mat-icon>
+              Remover
             </button>
-          </a>
+          </mat-menu>
         </mat-cell>
       </ng-container>
 

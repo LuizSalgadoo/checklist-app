@@ -31,13 +31,37 @@
           />
         </mat-form-field>
 
-        <td style="width: 35%">
-          <mat-form-field class="full-width">
-            <mat-label>REFERÊNCIA</mat-label>
-            <span matPrefix>https://pt.wikipedia.org/wiki/</span>
-            <input matInput formControlName="referencia" />
-          </mat-form-field>
-        </td>
+
+
+      <mat-form-field class="full-width">
+        <mat-label>REFERÊNCIA</mat-label>
+        <span matPrefix>https://pt.wikipedia.org/wiki/</span>
+        <input matInput formControlName="referencia" />
+      </mat-form-field>
+
+
+
+
+      <mat-form-field class="alinhado-esquerda full-width">
+        <mat-label>Dias da Semana</mat-label>
+        <mat-select formArrayName="diasDaSemana" multiple>
+          <mat-option *ngFor="let dia of dias; let i = index" [value]="true">
+            <input type="checkbox" [formControlName]="i" class="hide-checkbox">
+            {{ dia }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Frequência de Repetição</mat-label>
+        <mat-select formControlName="repeticaoHoras">
+          <mat-option value="null">Sem repetição</mat-option>
+          <mat-option value="1">De hora em hora</mat-option>
+          <mat-option value="3">A cada 3 horas</mat-option>
+          <mat-option value="6">A cada 6 horas</mat-option>
+          <mat-option value="12">A cada 12 horas</mat-option>
+        </mat-select>
+      </mat-form-field>
 
     </form>
   </mat-card-content>

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TarefaFormComponent } from './tarefa-form.component';
+import { TarefaModalComponent } from './tarefa-modal.component';
 
-describe('TarefaFormComponent', () => {
-  let component: TarefaFormComponent;
-  let fixture: ComponentFixture<TarefaFormComponent>;
+describe('TarefaModalComponent', () => {
+  let component: TarefaModalComponent;
+  let fixture: ComponentFixture<TarefaModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TarefaFormComponent ]
+      declarations: [ TarefaModalComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TarefaFormComponent);
+    fixture = TestBed.createComponent(TarefaModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
