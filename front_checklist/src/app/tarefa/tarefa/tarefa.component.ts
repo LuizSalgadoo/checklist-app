@@ -3,6 +3,8 @@ import { Tarefa } from '../model/tarefa';
 import { TarefasService } from '../services/tarefas.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { TarefaModalComponent } from '../tarefa-modal/tarefa-modal.component';
 
 enum Status {
   Pendente = 'pendente',
@@ -17,6 +19,8 @@ enum Status {
 })
 export class TarefaComponent implements OnInit {
 
+  carregando = false
+
   tarefas: Observable<Tarefa[]>;
   displayedColumns = ['referencia', 'nome', 'prioridade', 'horamarcada', 'status', 'acoes'];
   currentStatus: Status = Status.Pendente;
@@ -26,7 +30,8 @@ export class TarefaComponent implements OnInit {
   constructor(
     private tarefaService: TarefasService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog
   ) {
     this.tarefas = this.tarefaService.listar();
   }
@@ -47,6 +52,16 @@ export class TarefaComponent implements OnInit {
 
   alterarEstadoObjeto() {
 
+  }
+
+  openModalCritic() {
+    const dialogRef = this.dialog.open(TarefaModalComponent, {
+      width: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('O modal foi fechado', result);
+    });
   }
 
   alterarStatus(element: any) {
@@ -95,6 +110,7 @@ export class TarefaComponent implements OnInit {
   construirUrl(referencia: string): string {
     return 'https://pt.wikipedia.org/wiki/' + referencia;
   }
+
 
 
 }

@@ -23,6 +23,7 @@ import { TarefaRoutingModule } from './tarefa-routing.module';
 import { TarefaUpdateComponent } from './tarefa-update/tarefa-update.component';
 import { TarefaComponent } from './tarefa/tarefa.component';
 import { TarefaDeleteComponent } from './tarefa-delete/tarefa-delete.component';
+import { TarefaModalComponent } from './tarefa-modal/tarefa-modal.component';
 
 
 
@@ -36,7 +37,8 @@ import { TarefaDeleteComponent } from './tarefa-delete/tarefa-delete.component';
     TarefaComponent,
     TarefaFormComponent,
     TarefaUpdateComponent,
-    TarefaDeleteComponent
+    TarefaDeleteComponent,
+    TarefaModalComponent
   ],
   imports: [
     CommonModule,
