@@ -71,8 +71,10 @@ public class CheckController {
             responseDtos.add(new CheckListDtoPost(checkList, uri));
         }
 
-        return ResponseEntity.created(null).body(responseDtos); /
+        return ResponseEntity.created(null).body(responseDtos);
     }
+
+
 
     @DeleteMapping("/deletar/{id}")
     public ResponseEntity<?> remove(@PathVariable Integer id) {
