@@ -17,6 +17,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -53,14 +55,21 @@ public class CheckController {
         List<CheckList> checkLists = new ArrayList<>();
         List<CheckListDtoPost> responseDtos = new ArrayList<>();
 
+        // Convertendo a hora marcada de String para LocalTime
+        LocalTime horaMarcada = LocalTime.parse(form.getHoramarcada(), DateTimeFormatter.ofPattern("HH:mm"));
+
         int repeticoes = 24 / (form.getRepeticaoHoras() != null ? form.getRepeticaoHoras() : 24);
 
         for (int i = 0; i < repeticoes; i++) {
+            LocalTime novaHora = horaMarcada.plusHours(i * (form.getRepeticaoHoras() != null ? form.getRepeticaoHoras() : 0));
+
+            // Se a nova hora ultrapassar 23:59, interrompe o loop
+            if (novaHora.isAfter(LocalTime.of(23, 59))) {
+                break;
+            }
+
             CheckList checkList = form.converter(checkRepository);
-
-            // Ajustar a hora de início com base na frequência de repetição
-            checkList.ajustarHoraInicio(i * (form.getRepeticaoHoras() != null ? form.getRepeticaoHoras() : 0));
-
+            checkList.setHoramarcada(novaHora.format(DateTimeFormatter.ofPattern("HH:mm"))); // Convertendo de volta para String
             checkLists.add(checkList);
         }
 
@@ -73,6 +82,8 @@ public class CheckController {
 
         return ResponseEntity.created(null).body(responseDtos);
     }
+
+
 
 
 
