@@ -49,14 +49,33 @@ public class CheckController {
 
     @RequestMapping("/criarchecklist")
     @PostMapping
-    public ResponseEntity<CheckListDtoPost> criarCheckList(@Valid @RequestBody CheckListDtoPost form, UriComponentsBuilder uriBuiler) {
-        CheckList checkListPost = form.converter(checkRepository);
-        checkRepository.save(checkListPost);
+    public ResponseEntity<List<CheckListDtoPost>> criarCheckList(@Valid @RequestBody CheckListDtoPost form, UriComponentsBuilder uriBuiler) {
+        List<CheckList> checkLists = new ArrayList<>();
+        List<CheckListDtoPost> responseDtos = new ArrayList<>();
 
-        URI uri = uriBuiler.path("/criarchecklist/{id}").buildAndExpand(checkListPost.getId()).toUri();
-        return ResponseEntity.created(uri).body(new CheckListDtoPost(checkListPost));
+        int repeticoes = 24 / (form.getRepeticaoHoras() != null ? form.getRepeticaoHoras() : 24);
+
+        for (int i = 0; i < repeticoes; i++) {
+            CheckList checkList = form.converter(checkRepository);
+
+            // Ajustar a hora de início com base na frequência de repetição
+            checkList.ajustarHoraInicio(i * (form.getRepeticaoHoras() != null ? form.getRepeticaoHoras() : 0));
+
+            checkLists.add(checkList);
+        }
+
+        checkRepository.saveAll(checkLists);
+
+        for (CheckList checkList : checkLists) {
+            URI uri = uriBuiler.path("/criarchecklist/{id}").buildAndExpand(checkList.getId()).toUri();
+            responseDtos.add(new CheckListDtoPost(checkList, uri));
+        }
+
+        return ResponseEntity.created(null).body(responseDtos);
     }
-    
+
+
+
     @DeleteMapping("/deletar/{id}")
     public ResponseEntity<?> remove(@PathVariable Integer id) {
         checkRepository.deleteById(id);

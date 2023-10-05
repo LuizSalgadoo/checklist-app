@@ -9,6 +9,7 @@ import lombok.Getter;
 import javax.persistence.ElementCollection;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import java.net.URI;
 import java.util.List;
 
 @Getter
@@ -28,7 +29,7 @@ public class CheckListDtoPost {
 
     private Integer repeticaoHoras;
 
-    public CheckListDtoPost() {
+    public CheckListDtoPost(CheckList checkList, URI uri) {
     }
 
     public CheckListDtoPost(CheckList checkListPost) {

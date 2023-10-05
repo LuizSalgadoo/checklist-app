@@ -75,4 +75,11 @@ public class CheckList {
         this.diasDaSemana = diasDaSemana;
         this.repeticaoHoras = repeticaoHoras;
     }
+
+    public void ajustarHoraInicio(int horas) {
+        if (this.horainicio != null) {
+            this.horainicio = this.horainicio.plusHours(horas);
+        }
+    }
+
 }
