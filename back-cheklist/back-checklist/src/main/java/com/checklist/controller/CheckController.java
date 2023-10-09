@@ -60,13 +60,22 @@ public class CheckController {
 
         int repeticoes = 24 / (form.getRepeticaoHoras() != null ? form.getRepeticaoHoras() : 24);
 
-        for (int i = 0; i < repeticoes; i++) {
-            LocalTime novaHora = horaMarcada.plusHours(i * (form.getRepeticaoHoras() != null ? form.getRepeticaoHoras() : 0));
+        LocalTime meiaNoite = LocalTime.parse("00:00");
 
-            // Se a nova hora ultrapassar 23:59, interrompe o loop
-            if (novaHora.isAfter(LocalTime.of(23, 59))) {
+        var repeticaoHoras = form.getRepeticaoHoras();
+        System.out.println("Hora marcada: " + horaMarcada);
+        System.out.println("Meia noite: " + meiaNoite);
+        LocalTime calculoAteMeiaNoite = meiaNoite.minusHours(horaMarcada.getHour()).minusMinutes(horaMarcada.getMinute());
+        System.out.println("Calculo está certo? " + calculoAteMeiaNoite);
+
+        for (int i = 0; i < repeticoes; i++) {
+            int horaAteMeiaNoite = calculoAteMeiaNoite.getHour();
+            if (horaAteMeiaNoite / repeticaoHoras < i) {
                 break;
             }
+
+
+            LocalTime novaHora = horaMarcada.plusHours(i * (form.getRepeticaoHoras() != null ? form.getRepeticaoHoras() : 0));
 
             CheckList checkList = form.converter(checkRepository);
             checkList.setHoramarcada(novaHora.format(DateTimeFormatter.ofPattern("HH:mm"))); // Convertendo de volta para String
