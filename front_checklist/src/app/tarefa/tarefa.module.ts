@@ -24,6 +24,7 @@ import { TarefaUpdateComponent } from './tarefa-update/tarefa-update.component';
 import { TarefaComponent } from './tarefa/tarefa.component';
 import { TarefaDeleteComponent } from './tarefa-delete/tarefa-delete.component';
 import { TarefaModalComponent } from './tarefa-modal/tarefa-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -48,6 +49,7 @@ import { TarefaModalComponent } from './tarefa-modal/tarefa-modal.component';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
+    MatDialogModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,

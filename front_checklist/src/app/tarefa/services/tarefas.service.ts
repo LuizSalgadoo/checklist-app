@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { first, tap, Observable } from 'rxjs';
 import { Tarefa } from '../model/tarefa';
-import { Printona } from '../model/printona';
 
 @Injectable({
   providedIn: 'root',
@@ -21,11 +20,11 @@ export class TarefasService {
     console.log(this.httpClient.get(this.API) + "Tomaaa")
   }
 
-  enviarPrint(print: any) {
-    return this.httpClient
-      .post<Printona>(this.API + '/printEvidencia', print)
-      .pipe(first());
-  }
+  // enviarPrint(print: any) {
+  //   return this.httpClient
+  //     .post<Printona>(this.API + '/printEvidencia', print)
+  //     .pipe(first());
+  // }
 
   save(tarefa: Tarefa) {
     return this.httpClient
